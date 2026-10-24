@@ -1,5 +1,5 @@
 {
-  description = "A flake providing a Rust development environment with cargo";
+  description = "A development environment with Rust and Go toolchains";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
@@ -28,12 +28,16 @@
 
       in {
         devShells.default = pkgs.mkShell {
-          name = "rust-dev";
+          name = "rust-go-dev";
 
-          # This makes cargo, rustc, etc. available in the shell
-          nativeBuildInputs = [ rustToolchain ];
+          # Make the Rust and Go toolchains available in the shell.
+          nativeBuildInputs = [
+            rustToolchain
+            pkgs.go
+            pkgs.gopls
+          ];
 
-          # Optional: common tools people like to have when doing Rust dev
+          # Supporting tools for Rust and Go development.
           buildInputs = with pkgs; [
             pkg-config
           ];
