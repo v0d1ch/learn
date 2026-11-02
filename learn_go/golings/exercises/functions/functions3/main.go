@@ -7,7 +7,7 @@ package main
 import "fmt"
 
 func main() {
-	call_me()
+	call_me(1)
 }
 
 func call_me(num int) {

@@ -11,6 +11,6 @@ func main() {
 	print(42)
 }
 
-func print(value) {
+func print[T string | int](value T) {
 	fmt.Println(value)
 }
