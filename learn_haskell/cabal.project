@@ -1,0 +1,15 @@
+packages: .
+index-state: 2026-09-05T22:14:32Z
+optimization: False
+write-ghc-environment-files: never
+
+-- This fork supplies Executable and runActionResult used by the exercises.
+-- The version alone is insufficient: Hackage's 0.1.1.0 has a different API.
+source-repository-package
+  type: git
+  location: https://github.com/cardano-scaling/crem
+  tag: 29057be288a80e8ca4dfab42b20b7c67498d6b90
+
+package crem
+  tests: False
+  benchmarks: False

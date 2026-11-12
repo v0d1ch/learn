@@ -1,5 +1,5 @@
 {
-  description = "A development environment with Rust and Go toolchains";
+  description = "A development environment with Rust, Go and Haskell toolchains";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
@@ -28,18 +28,23 @@
 
       in {
         devShells.default = pkgs.mkShell {
-          name = "rust-go-dev";
+          name = "rust-go-haskell-dev";
 
-          # Make the Rust and Go toolchains available in the shell.
+          # Make the Rust, Go and Haskell toolchains available in the shell.
           nativeBuildInputs = [
             rustToolchain
             pkgs.go
             pkgs.gopls
+            pkgs.haskell.compiler.ghc967
+            pkgs.cabal-install
+            pkgs.gitMinimal
           ];
 
-          # Supporting tools for Rust and Go development.
+          # Supporting libraries and tools for native builds.
           buildInputs = with pkgs; [
             pkg-config
+            gmp
+            zlib
           ];
 
           # Makes SSL certificates work for cargo crates that fetch git deps, etc.
